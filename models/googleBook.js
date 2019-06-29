@@ -4,13 +4,13 @@ const Schema = mongoose.Schema;
 const googleBookSchema = new Schema({
   title: { type: String, required: true },
   author: { type: String, required: true },
+  category: String,
   description: String,
   image: String,
   link: String,
-  favorite: { type: Boolean, default: false},
   date: { type: Date, default: Date.now }
 });
 
-const googleBook = mongoose.model("Book", googleBookSchema);
+const GoogleBook = mongoose.model("GoogleBook", googleBookSchema);
 
-module.exports = googleBook;
+module.exports = GoogleBook;

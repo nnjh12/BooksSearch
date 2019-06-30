@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 
-import { Col, Row, Container } from "../components/Grid";
-import Jumbotron from "../components/Jumbotron";
+import { Container } from "../components/Grid";
+import Jumbotron from "../components/jumbotron";
 import Card from "../components/card";
 import { LinkButton, Button } from "../components/button";
 
@@ -45,7 +45,9 @@ class Books extends Component {
         {this.state.savedBook.length === 0 ?
           "" : this.state.savedBook.map((ele, index) =>
             <Card
+              key={index}
               src={ele.image}
+              alt={ele.title}
               title={ele.title}
               category={ele.category}
               author={ele.author}

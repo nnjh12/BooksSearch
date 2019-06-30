@@ -3,9 +3,9 @@ import React from "react";
 function Input(props) {
     return (
         <form>
-            <div class="form-group">
+            <div className="form-group">
                 <label>{props.label}</label>
-                <input type="text" class="form-control" name="search" {...props}></input>
+                <input type="text" className="form-control" name="search" {...props}></input>
             </div>
         </form>
     );

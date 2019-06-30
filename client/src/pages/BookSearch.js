@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import API from "../utils/API";
 
-import { Col, Row, Container } from "../components/Grid";
-import Jumbotron from "../components/Jumbotron";
+import { Container } from "../components/Grid";
+import Jumbotron from "../components/jumbotron";
 import Card from "../components/card";
 import Input from "../components/input";
 import { LinkButton, Button } from "../components/button";
@@ -80,7 +80,9 @@ class Books extends Component {
         {this.state.searchResult.length === 0 ?
           "" : this.state.searchResult.map((ele, index) =>
             <Card
+              key={index}
               src={ele.image}
+              alt={ele.title}
               title={ele.title}
               category={ele.category}
               author={ele.author}
@@ -91,11 +93,10 @@ class Books extends Component {
                     href={ele.link}
                     target="_blank"
                     value="view"
-                    id="linkButton" />
+                  />
                   <Button
                     value="save"
                     onClick={() => this.saveBook(index)}
-                    id="saveButton"
                   />
                 </>
               }

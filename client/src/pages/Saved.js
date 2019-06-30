@@ -1,11 +1,10 @@
 import React, { Component } from "react";
-import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 
 import { Col, Row, Container } from "../components/Grid";
-import { LinkButton, Button } from "../components/button"
-import Card from "../components/card"
-
+import Jumbotron from "../components/Jumbotron";
+import Card from "../components/card";
+import { LinkButton, Button } from "../components/button";
 
 class Books extends Component {
   constructor(props) {
@@ -16,13 +15,12 @@ class Books extends Component {
   }
 
   componentDidMount() {
-    this.loadBooks();
+    this.loadBook();
   }
 
-  loadBooks = () => {
+  loadBook = () => {
     API.getBooks()
       .then(res =>
-        // console.log(res.data.items[0].volumeInfo.imageLinks.smallThumbnail)
         this.setState({ savedBook: res.data }, () => {
           console.log(this.state.savedBook)
         })
@@ -30,11 +28,10 @@ class Books extends Component {
       .catch(err => console.log(err));
   };
 
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
+  deleteBook = (id) => {
+    API.deleteBook(id)
+      .then(this.loadBook)
+      .catch(err => console.log(err));
   };
 
   render() {
@@ -62,7 +59,7 @@ class Books extends Component {
                     id="linkButton" />
                   <Button
                     value="delete"
-                    onClick={() => this.saveBooks(index)}
+                    onClick={() => this.deleteBook(ele._id)}
                     id="deleteButton"
                   />
                 </>

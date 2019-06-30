@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import Jumbotron from "../components/Jumbotron";
 import API from "../utils/API";
 
 import { Col, Row, Container } from "../components/Grid";
-import { LinkButton, Button } from "../components/button"
-import Input from "../components/input"
-import Card from "../components/card"
+import Jumbotron from "../components/Jumbotron";
+import Card from "../components/card";
+import Input from "../components/input";
+import { LinkButton, Button } from "../components/button";
 
 
 class Books extends Component {
@@ -15,10 +15,6 @@ class Books extends Component {
       search: "",
       searchResult: []
     };
-  }
-
-  componentDidMount() {
-    // this.loadBooks();
   }
 
   searchBooks = (value) => {
@@ -44,7 +40,7 @@ class Books extends Component {
       .catch(err => console.log(err));
   };
 
-  saveBooks = (index) => {
+  saveBook = (index) => {
     let bookData = {
       title: this.state.searchResult[index].title,
       author: this.state.searchResult[index].author,
@@ -98,7 +94,7 @@ class Books extends Component {
                     id="linkButton" />
                   <Button
                     value="save"
-                    onClick={() => this.saveBooks(index)}
+                    onClick={() => this.saveBook(index)}
                     id="saveButton"
                   />
                 </>
